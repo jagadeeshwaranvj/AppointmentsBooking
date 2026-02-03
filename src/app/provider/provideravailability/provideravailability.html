@@ -1,0 +1,59 @@
+<div class="layout">
+  <app-sidebar></app-sidebar>
+
+  <div class="content">
+    <h2 class="title">My Availability</h2>
+
+    <!-- Add Availability -->
+    <div class="card">
+      <div class="form-row">
+        <select [(ngModel)]="availability.dayOfWeek">
+          <option value="">Select Day</option>
+          <option [value]="1">Monday</option>
+          <option [value]="2">Tuesday</option>
+          <option [value]="3">Wednesday</option>
+          <option [value]="4">Thursday</option>
+          <option [value]="5">Friday</option>
+          <option [value]="6">Saturday</option>
+          <option [value]="7">Sunday</option>
+        </select>
+
+        <input type="time" [(ngModel)]="availability.startTime">
+        <input type="time" [(ngModel)]="availability.endTime">
+
+        <button (click)="save()">Add</button>
+      </div>
+    </div>
+
+    <!-- Availability Table -->
+    <div class="card">
+      <table class="availability-table">
+        <thead>
+          <tr>
+            <th>Day</th>
+            <th>Start Time</th>
+            <th>End Time</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let a of availabilities">
+            <td>{{ dayName(a.dayOfWeek) }}</td>
+            <td>{{ a.startTime }}</td>
+            <td>{{ a.endTime }}</td>
+            <td>
+              <button class="delete-btn" (click)="remove(a.availabilityId)">
+                Delete
+              </button>
+            </td>
+          </tr>
+
+          <tr *ngIf="availabilities.length === 0">
+            <td colspan="4" class="empty">No availability added</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

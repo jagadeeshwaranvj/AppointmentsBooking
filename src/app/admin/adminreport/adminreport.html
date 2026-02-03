@@ -1,0 +1,46 @@
+<div class="layout">
+  <app-sidebar></app-sidebar>
+
+  <div class="content">
+    <h2>Admin Reports</h2>
+
+    <!-- 1️⃣ By Service -->
+    <h3>Appointments by Service</h3>
+    <table>
+      <tr>
+        <th>Service</th>
+        <th>Count</th>
+      </tr>
+      <tr *ngFor="let r of byService">
+        <td>{{ r.service }}</td>
+        <td>{{ r.count }}</td>
+      </tr>
+    </table>
+
+    <!-- 2️⃣ Status -->
+    <h3>Status Summary</h3>
+    <table>
+      <tr>
+        <th>Status</th>
+        <th>Count</th>
+      </tr>
+      <tr *ngFor="let r of byStatus">
+        <td>{{ r.status }}</td>
+        <td>{{ r.count }}</td>
+      </tr>
+    </table>
+
+    <!-- 3️⃣ By Date -->
+    <h3>Appointments by Date</h3>
+    <table>
+      <tr>
+        <th>Date</th>
+        <th>Count</th>
+      </tr>
+      <tr *ngFor="let r of byDate">
+        <td>{{ r.date | date }}</td>
+        <td>{{ r.count }}</td>
+      </tr>
+    </table>
+  </div>
+</div>

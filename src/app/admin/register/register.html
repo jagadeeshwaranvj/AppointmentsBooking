@@ -1,0 +1,82 @@
+<div class="layout">
+  <app-sidebar></app-sidebar>
+
+  <div class="content">
+    <h2>Register User</h2>
+
+    <form class="form-box" #form="ngForm" novalidate>
+
+      <input
+        name="name"
+        placeholder="Name"
+        [(ngModel)]="user.name"
+        required
+        minlength="3"
+        #name="ngModel"
+      />
+      <small class="error" *ngIf="name.invalid && name.touched">
+        Name must be at least 3 characters
+      </small>
+
+      <input
+        name="email"
+        placeholder="Email"
+        [(ngModel)]="user.email"
+        required
+        email
+        #email="ngModel"
+      />
+      <small class="error" *ngIf="email.invalid && email.touched">
+        Enter a valid email address
+      </small>
+
+      <input
+        name="phone"
+        placeholder="Phone"
+        [(ngModel)]="user.phone"
+        required
+        pattern="^[6-9][0-9]{9}$"
+        #phone="ngModel"
+      />
+      <small class="error" *ngIf="phone.invalid && phone.touched">
+        Enter a valid 10-digit mobile number
+      </small>
+
+      <input
+        type="password"
+        name="password"
+        placeholder="Password"
+        [(ngModel)]="user.passwordHash"
+        required
+        minlength="6"
+        #password="ngModel"
+      />
+      <small class="error" *ngIf="password.invalid && password.touched">
+        Password must be at least 6 characters
+      </small>
+
+      <select
+        name="role"
+        [(ngModel)]="user.role"
+        required
+        #role="ngModel"
+      >
+        <option value="">Select Role</option>
+        <option value="CUSTOMER">Customer</option>
+        <option value="PROVIDER">Provider</option>
+      </select>
+      <small class="error" *ngIf="role.invalid && role.touched">
+        Please select a role
+      </small>
+
+      <button
+        type="button"
+        (click)="register()"
+        [disabled]="form.invalid"
+      >
+        Register
+      </button>
+
+    </form>
+  </div>
+</div>

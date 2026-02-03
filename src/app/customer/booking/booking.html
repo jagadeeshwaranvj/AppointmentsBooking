@@ -1,0 +1,61 @@
+<div class="layout">
+  <app-sidebar></app-sidebar>
+
+  <div class="content">
+    <div class="booking-card">
+
+      <h2>Book Appointment</h2>
+
+      <!-- SERVICE -->
+      <label>Service</label>
+      <select [(ngModel)]="selectedServiceId" (change)="loadProviders()">
+        <option [ngValue]="null">Select Service</option>
+        <option *ngFor="let s of services" [ngValue]="s.serviceId">
+          {{ s.name }}
+        </option>
+      </select>
+
+      <!-- DATE -->
+      <label>Date</label>
+      <input
+        type="date"
+        [(ngModel)]="selectedDate"
+        (change)="loadProviders()"
+      />
+
+      <!-- PROVIDER -->
+      <label>Provider</label>
+      <select [(ngModel)]="selectedProviderId" (change)="loadSlots()">
+        <option [ngValue]="null">Select Provider</option>
+        <option *ngFor="let p of providers" [ngValue]="p.userId">
+          {{ p.name }}
+        </option>
+      </select>
+
+      <!-- SLOTS -->
+      <label>Available Slots</label>
+
+      <div class="slots">
+        <button
+          type="button"
+          *ngFor="let slot of slots"
+          (click)="selectedSlot = slot"
+          [class.active]="selectedSlot === slot"
+        >
+          {{ slot }}
+        </button>
+      </div>
+
+      <!-- BOOK -->
+      <button
+        class="book-btn"
+        type="button"
+        (click)="book()"
+        [disabled]="!selectedSlot"
+      >
+        Book Appointment
+      </button>
+
+    </div>
+  </div>
+</div>

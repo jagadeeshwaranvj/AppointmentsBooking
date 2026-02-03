@@ -1,0 +1,88 @@
+<div class="layout">
+  <app-sidebar></app-sidebar>
+
+  <div class="content">
+    <h2>Service Management</h2>
+
+    <form #serviceForm="ngForm" class="form">
+
+      <!-- SERVICE NAME -->
+      <label>Service Name</label>
+      <input
+        type="text"
+        name="name"
+        required
+        [(ngModel)]="form.name"
+        #name="ngModel"
+        placeholder="Enter service name"
+      />
+      <small class="error" *ngIf="name.invalid && name.touched">
+        Service name is required
+      </small>
+
+      <!-- DESCRIPTION -->
+      <label>Description</label>
+      <textarea
+        name="description"
+        required
+        [(ngModel)]="form.description"
+        #description="ngModel"
+        placeholder="Enter service description"
+      ></textarea>
+      <small class="error" *ngIf="description.invalid && description.touched">
+        Description is required
+      </small>
+
+      <!-- DURATION -->
+      <label>Duration (minutes)</label>
+      <input
+        type="number"
+        name="duration"
+        required
+        min="5"
+        [(ngModel)]="form.durationInMinutes"
+        #duration="ngModel"
+      />
+      <small class="error" *ngIf="duration.invalid && duration.touched">
+        Duration must be at least 5 minutes
+      </small>
+
+      <!-- BUTTON -->
+      <button
+        type="button"
+        (click)="save()"
+        [disabled]="serviceForm.invalid"
+      >
+        {{ editId === null ? 'Add Service' : 'Update Service' }}
+      </button>
+
+    </form>
+
+    <hr />
+
+    <!-- SERVICES TABLE -->
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Duration</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+
+      <tr *ngFor="let s of services">
+        <td>{{ s.name }}</td>
+        <td>{{ s.description }}</td>
+        <td>{{ s.durationInMinutes }} mins</td>
+        <td>{{ s.isActive ? 'Active' : 'Inactive' }}</td>
+        <td>
+          <button (click)="edit(s)">Edit</button>
+          <button (click)="toggle(s.serviceId)">
+            {{ s.isActive ? 'Disable' : 'Enable' }}
+          </button>
+          <button (click)="delete(s.serviceId)">Delete</button>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

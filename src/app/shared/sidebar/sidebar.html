@@ -1,0 +1,52 @@
+<div class="sidebar">
+
+  <!-- ADMIN MENU -->
+  <div *ngIf="auth.isAdmin()">
+    <h3>Admin</h3>
+     <a routerLink="/admin">Dashboard</a>
+<a routerLink="/admin/services" routerLinkActive="active">
+  Services
+</a>
+
+    <a routerLink="/admin/providers">Providers</a>
+    <a routerLink="/admin/customers">Customers</a>
+    <div *ngIf="auth.isAdmin()">
+
+  <a routerLink="/admin/register">Registration</a>
+</div>
+<a routerLink="/admin/appointments">Appointments</a>
+
+<a routerLink="/admin/reports">Reports</a>
+
+  </div>
+
+  <!-- PROVIDER MENU -->
+  <div *ngIf="auth.isProvider()">
+    <h3>Provider</h3>
+<a routerLink="/provider" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+  Dashboard
+</a>
+
+<a routerLink="/provider/appointments" routerLinkActive="active">
+  Appointments
+</a>
+
+<a routerLink="/provider/availability" routerLinkActive="active">
+  Availability
+</a>
+
+
+  </div>
+
+  <!-- CUSTOMER MENU -->
+  <div *ngIf="auth.isCustomer()">
+    <h3>Customer</h3>
+    <a routerLink="/customerdashboard">Dashboard</a>
+    <a routerLink="/customer/booking">Book Appointment</a>
+ <a routerLink="/customer/my-appointments">My Appointments</a>
+  </div>
+
+  <hr>
+
+  <button class="logout" (click)="logout()">Logout</button>
+</div>

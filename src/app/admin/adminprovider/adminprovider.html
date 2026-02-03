@@ -1,0 +1,39 @@
+<div class="layout">
+  <app-sidebar></app-sidebar>
+
+  <div class="content">
+    <h2>Providers</h2>
+
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Action</th>
+      </tr>
+
+      <tr *ngFor="let p of providers">
+        <td>
+          <input *ngIf="editId === p.userId" [(ngModel)]="editData.name">
+          <span *ngIf="editId !== p.userId">{{ p.name }}</span>
+        </td>
+
+        <td>
+          <input *ngIf="editId === p.userId" [(ngModel)]="editData.email">
+          <span *ngIf="editId !== p.userId">{{ p.email }}</span>
+        </td>
+
+        <td>
+          <input *ngIf="editId === p.userId" [(ngModel)]="editData.phone">
+          <span *ngIf="editId !== p.userId">{{ p.phone }}</span>
+        </td>
+
+        <td>
+          <button *ngIf="editId !== p.userId" (click)="edit(p)">Edit</button>
+          <button *ngIf="editId === p.userId" (click)="save(p.userId)">Save</button>
+          <button (click)="delete(p.userId)">Delete</button>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

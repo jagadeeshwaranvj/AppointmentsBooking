@@ -1,0 +1,88 @@
+/* ---------- Layout ---------- */
+.layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+app-sidebar {
+  width: 220px;
+  flex-shrink: 0;
+}
+
+.content {
+  padding: 24px;
+  width: calc(100% - 220px);
+  background: #f9fafb;
+}
+
+/* ---------- Headings ---------- */
+.title {
+  margin-bottom: 20px;
+}
+
+/* ---------- Card ---------- */
+.card {
+  background: white;
+  padding: 16px;
+  margin-bottom: 20px;
+  border-radius: 6px;
+  border: 1px solid #e5e7eb;
+}
+
+/* ---------- Form ---------- */
+.form-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+select,
+input[type="time"] {
+  padding: 6px 8px;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+}
+
+button {
+  padding: 6px 14px;
+  border: none;
+  border-radius: 4px;
+  background-color: #2563eb;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #1d4ed8;
+}
+
+/* ---------- Table ---------- */
+.availability-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.availability-table th,
+.availability-table td {
+  border: 1px solid #e5e7eb;
+  padding: 10px;
+  text-align: left;
+}
+
+.availability-table th {
+  background: #f3f4f6;
+  font-weight: 600;
+}
+
+.delete-btn {
+  background: #dc2626;
+}
+
+.delete-btn:hover {
+  background: #b91c1c;
+}
+
+.empty {
+  text-align: center;
+  color: #6b7280;
+}

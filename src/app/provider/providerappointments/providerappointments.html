@@ -1,0 +1,32 @@
+<div class="layout">
+  <app-sidebar></app-sidebar>
+
+  <div class="content">
+    <h2>My Appointments</h2>
+
+    <table border="1" cellpadding="8">
+      <tr>
+        <th>Customer</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Status</th>
+      </tr>
+
+      <tr *ngFor="let a of appointments">
+        <td>{{ a.customerName }}</td>
+        <td>{{ a.appointmentDate | date }}</td>
+        <td>{{ a.startTime }} - {{ a.endTime }}</td>
+       <td>
+  <select
+    [ngModel]="a.status"
+    (change)="updateStatus(a.appointmentId, $any($event.target).value)">
+    <option value="Scheduled">Scheduled</option>
+    <option value="Completed">Completed</option>
+    <option value="Cancelled">Cancelled</option>
+  </select>
+</td>
+
+      </tr>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,111 @@
+/* ===== LAYOUT ===== */
+.layout {
+  display: flex;
+  min-height: 100vh;
+  background: #f1f5f9;
+}
+
+app-sidebar {
+  width: 240px;
+  flex-shrink: 0;
+}
+
+.content {
+  margin-left: 240px;
+  width: calc(100% - 240px);
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ===== CARD ===== */
+.booking-card {
+  width: 100%;
+  max-width: 460px;
+  background: #ffffff;
+  padding: 28px;
+  border-radius: 14px;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.12);
+}
+
+/* title */
+.booking-card h2 {
+  margin: 0 0 20px 0;
+  text-align: center;
+  font-size: 22px;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+/* labels */
+.booking-card label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 500;
+  color: #334155;
+}
+
+/* inputs & selects */
+.booking-card select,
+.booking-card input[type="date"] {
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 16px;
+  border-radius: 8px;
+  border: 1px solid #cbd5f5;
+  font-size: 14px;
+}
+
+/* focus */
+.booking-card select:focus,
+.booking-card input[type="date"]:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+}
+
+/* ===== SLOTS ===== */
+.slots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.slots button {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: none;
+  background: #e5e7eb;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.slots button.active {
+  background: #22c55e;
+  color: white;
+}
+
+/* ===== BOOK BUTTON ===== */
+.book-btn {
+  width: 100%;
+  padding: 12px;
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.book-btn:disabled {
+  background: #94a3b8;
+  cursor: not-allowed;
+}
+
+.book-btn:hover:not(:disabled) {
+  background: #1d4ed8;
+}

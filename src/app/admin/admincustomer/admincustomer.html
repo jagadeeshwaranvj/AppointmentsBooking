@@ -1,0 +1,36 @@
+<div class="layout">
+  <app-sidebar></app-sidebar>
+
+  <div class="content">
+    <h2>Registered Customers</h2>
+
+    <table border="1" cellpadding="8">
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Actions</th>
+      </tr>
+
+      <tr *ngFor="let c of customers">
+        <td>{{ c.name }}</td>
+        <td>{{ c.email }}</td>
+        <td>{{ c.phone }}</td>
+        <td>
+          <button (click)="edit(c)">Edit</button>
+          <button (click)="delete(c.userId)">Delete</button>
+        </td>
+      </tr>
+    </table>
+
+    <!-- EDIT FORM -->
+    <div *ngIf="editUser" class="edit-box">
+      <h3>Edit Customer</h3>
+      <input [(ngModel)]="editUser.name">
+      <input [(ngModel)]="editUser.email">
+      <input [(ngModel)]="editUser.phone">
+      <button (click)="update()">Update</button>
+      <button (click)="editUser=null">Cancel</button>
+    </div>
+  </div>
+</div>

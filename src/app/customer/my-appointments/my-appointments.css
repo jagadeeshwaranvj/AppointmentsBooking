@@ -1,0 +1,83 @@
+/* ===== LAYOUT ===== */
+.layout {
+  display: flex;
+  min-height: 100vh;
+  background: #f1f5f9;
+}
+
+/* sidebar space */
+app-sidebar {
+  width: 240px;
+  flex-shrink: 0;
+}
+
+/* content */
+.content {
+  margin-left: 240px;
+  width: calc(100% - 240px);
+  padding: 24px;
+}
+
+/* title */
+.content h2 {
+  margin: 0 0 20px 0;
+  font-size: 22px;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+/* ===== TABLE CARD ===== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+/* header */
+th {
+  background: #1e293b;
+  color: #ffffff;
+  padding: 14px;
+  text-align: left;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+/* body cells */
+td {
+  padding: 12px;
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 14px;
+  color: #334155;
+}
+
+/* hover */
+tr:hover {
+  background: #f8fafc;
+}
+
+/* empty state */
+tr td[colspan] {
+  text-align: center;
+  padding: 20px;
+  color: #64748b;
+  font-style: italic;
+}
+
+/* cancel button */
+td button {
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: none;
+  background: #ef4444;
+  color: white;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+td button:hover {
+  background: #dc2626;
+}
