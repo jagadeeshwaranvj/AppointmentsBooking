@@ -32,7 +32,7 @@ export const routes: Routes = [
     {path:'customer',component:Customerdashboard, canActivate:[customerguardGuard]},
   {path:'customer/my-appointments',component:MyAppointments, canActivate:[customerguardGuard]},
 
-{path:'admin/register',component:Register},
+{path:'admin/register',component:Register, canActivate:[authguardGuard]},
 {path:'admin/appointments',component:AdminAppointments, canActivate:[authguardGuard]},
 
 {path:'customer/booking',component:Booking, canActivate:[customerguardGuard]},
@@ -42,5 +42,5 @@ export const routes: Routes = [
 {path:'admin/reports',component:Adminreport, canActivate:[authguardGuard]},
 
 
-    {path:'',redirectTo:'login',pathMatch:'full'}
+    
 ];

@@ -2,17 +2,61 @@
   <app-sidebar></app-sidebar>
 
   <div class="content">
-    <h2>Customer Dashboard</h2>
 
-    <div class="card">
-      <h3>Welcome Customer 😊</h3>
-      <p>From here you can:</p>
-      <ul>
-        <li>Book appointments</li>
-        <li>View your appointments</li>
-        <li>Cancel future appointments</li>
-      </ul>
+ 
+    <div class="top-bar">
+      <h2>Welcome, {{ customerName }}</h2>
     </div>
+
+   
+    <div class="card-grid">
+
+      <div class="stat-card">
+        <h3>Total Appointments</h3>
+        <p>{{ totalAppointments }}</p>
+      </div>
+
+      <div class="stat-card">
+        <h3>Appointment Status</h3>
+        <p>Scheduled: {{ scheduledCount }}</p>
+        <p>Completed: {{ completedCount }}</p>
+        <p>Cancelled: {{ cancelledCount }}</p>
+      </div>
+
+      <div class="stat-card">
+        <h3>Customer Info</h3>
+        <p>Name: {{ customerName }}</p>
+        <p>ID: {{ customerId }}</p>
+      </div>
+
+    </div>
+
+    
+    <div class="table-card">
+      <h3>My Appointments</h3>
+
+      <table>
+        <tr>
+          <th>Service</th>
+          <th>Provider</th>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Status</th>
+        </tr>
+
+        <tr *ngFor="let a of appointments">
+          <td>{{ a.serviceName }}</td>
+          <td>{{ a.providerName }}</td>
+          <td>{{ a.appointmentDate | date }}</td>
+          <td>{{ a.startTime }} - {{ a.endTime }}</td>
+          <td>{{ a.status }}</td>
+        </tr>
+
+        <tr *ngIf="appointments.length === 0">
+          <td colspan="5">No appointments found</td>
+        </tr>
+      </table>
+    </div>
+
   </div>
 </div>
-<button (click)="logout()">Logout</button>

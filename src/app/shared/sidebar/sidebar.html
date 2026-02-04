@@ -1,6 +1,6 @@
 <div class="sidebar">
 
-  <!-- ADMIN MENU -->
+ 
   <div *ngIf="auth.isAdmin()">
     <h3>Admin</h3>
      <a routerLink="/admin">Dashboard</a>
@@ -20,7 +20,8 @@
 
   </div>
 
-  <!-- PROVIDER MENU -->
+
+
   <div *ngIf="auth.isProvider()">
     <h3>Provider</h3>
 <a routerLink="/provider" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
@@ -38,10 +39,11 @@
 
   </div>
 
-  <!-- CUSTOMER MENU -->
+
   <div *ngIf="auth.isCustomer()">
     <h3>Customer</h3>
-    <a routerLink="/customerdashboard">Dashboard</a>
+    <a routerLink="/customer">Dashboard</a>
+
     <a routerLink="/customer/booking">Book Appointment</a>
  <a routerLink="/customer/my-appointments">My Appointments</a>
   </div>

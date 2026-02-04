@@ -1,17 +1,19 @@
 <div class="login-container">
-  <div class="login-box">
-    <h2>Login</h2>
+  <div class="login-panel">
+    <div class="login-card">
+      <h2>Login</h2>
 
-    <input type="email" placeholder="Email" [(ngModel)]="email">
-    <input type="password" placeholder="Password" [(ngModel)]="password">
+      <input type="email" placeholder="Email" [(ngModel)]="email">
+      <input type="password" placeholder="Password" [(ngModel)]="password">
 
-    <select [(ngModel)]="selectedRole">
-      <option value="">Select Role</option>
-      <option value="ADMIN">Admin</option>
-      <option value="PROVIDER">Provider</option>
-      <option value="CUSTOMER">Customer</option>
-    </select>
+      <select [(ngModel)]="selectedRole">
+        <option value="">Select Role</option>
+        <option value="ADMIN">Admin</option>
+        <option value="PROVIDER">Provider</option>
+        <option value="CUSTOMER">Customer</option>
+      </select>
 
-    <button type="button" (click)="login()">Login</button>
+      <button type="button" (click)="login()">Login</button>
+    </div>
   </div>
 </div>

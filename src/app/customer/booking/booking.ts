@@ -70,7 +70,7 @@ export class Booking {
       appointmentDate: this.selectedDate,
       startTime: this.selectedSlot
     }).subscribe({
-      next: () => alert('✅ Appointment booked successfully'),
+      next: () => alert('Appointment booked successfully'),
       error: err => alert(err.error)
     });
   }

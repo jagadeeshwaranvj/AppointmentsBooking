@@ -13,6 +13,7 @@ export class Servicesservice {
     return this.http.get<any[]>(this.api);
   }
 
+
   add(data: any) {
     return this.http.post(this.api, data);
   }

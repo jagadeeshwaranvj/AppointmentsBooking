@@ -6,12 +6,12 @@ import { Observable } from 'rxjs';
 })
 export class Authservice {
   
-private apiUrl = 'https://localhost:7286/api/Users';
+ private apiUrl = 'https://localhost:7286/api/Users';
 
   constructor(private http: HttpClient) {}
 
-  // 🔐 LOGIN API
-  login(email: string, password: string): Observable<any> {
+  
+  login(email: string, password: string) {
     return this.http.post<any>(
       `${this.apiUrl}/login`,
       null,
@@ -19,13 +19,14 @@ private apiUrl = 'https://localhost:7286/api/Users';
     );
   }
 
-  // ✅ SAVE LOGGED-IN USER
-  setLoginUser(userId: number, role: string) {
+  
+  setLoginUser(userId: number, role: string, name: string) {
     localStorage.setItem('userId', userId.toString());
     localStorage.setItem('role', role);
+    localStorage.setItem('name', name);
   }
 
-  // 🔍 GETTERS
+  
   getUserId(): number {
     return Number(localStorage.getItem('userId'));
   }
@@ -34,7 +35,11 @@ private apiUrl = 'https://localhost:7286/api/Users';
     return localStorage.getItem('role') || '';
   }
 
-  // 🧠 ROLE CHECKS
+  getUserName(): string {
+    return localStorage.getItem('name') || '';
+  }
+
+  
   isAdmin(): boolean {
     return this.getRole() === 'ADMIN';
   }
@@ -47,7 +52,7 @@ private apiUrl = 'https://localhost:7286/api/Users';
     return this.getRole() === 'CUSTOMER';
   }
 
-  // 🚪 LOGOUT
+  
   logout() {
     localStorage.clear();
   }

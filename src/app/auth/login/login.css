@@ -1,62 +1,101 @@
-/* Full screen center */
+
 .login-container {
   height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+}
+
+
+.login-container::before {
+  content: '';
+  background: linear-gradient(
+      rgba(0,0,0,0.35),
+      rgba(0,0,0,0.35)
+    ),
+    url('https://boldist.co/wp-content/uploads/2023/06/What-Is-Social-Login-and-Does-Your-Business-Need-It_.jpg')
+      center / cover no-repeat;
+}
+
+
+.login-panel {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(135deg, #4f46e5, #9333ea);
-  font-family: 'Segoe UI', sans-serif;
+  background: #eef2f5;
 }
 
-/* Login card */
-.login-box {
+
+.login-card {
+  width: 420px;
+  height: 460px;
   background: #ffffff;
-  padding: 30px 25px;
-  width: 320px;
-  border-radius: 12px;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  border-radius: 18px;
+  padding: 36px 40px;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-/* Heading */
-.login-box h2 {
+
+.login-card h2 {
   text-align: center;
-  margin-bottom: 20px;
-  color: #333;
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 28px;
+  color: #0f172a;
 }
 
-/* Inputs & select */
-.login-box input,
-.login-box select {
+
+.login-card input,
+.login-card select {
   width: 100%;
-  padding: 10px 12px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
+  padding: 12px 14px;
+  margin-bottom: 16px;
+  border-radius: 10px;
+  border: 1px solid #d1d9e6;
   font-size: 14px;
+}
+
+
+.login-card input:focus,
+.login-card select:focus {
   outline: none;
-  transition: border-color 0.3s;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.15);
 }
 
-/* Focus effect */
-.login-box input:focus,
-.login-box select:focus {
-  border-color: #4f46e5;
-}
 
-/* Button */
-.login-box button {
-  width: 100%;
-  padding: 10px;
-  background: #4f46e5;
+.login-card button {
+  margin-top: 22px;
+  align-self: center;
+  padding: 10px 36px;
+  background: #2563eb;
   color: #fff;
   border: none;
-  border-radius: 6px;
+  border-radius: 10px;
   font-size: 15px;
   cursor: pointer;
-  transition: background 0.3s;
 }
 
-/* Hover */
-.login-box button:hover {
-  background: #4338ca;
+.login-card button:hover {
+  background: #1d4ed8;
+}
+
+
+@media (max-width: 900px) {
+  .login-container {
+    grid-template-columns: 1fr;
+  }
+
+  .login-container::before {
+    height: 220px;
+  }
+
+  .login-card {
+    width: 90%;
+    height: auto;
+  }
 }

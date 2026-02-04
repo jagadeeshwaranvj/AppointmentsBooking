@@ -2,9 +2,66 @@
   <app-sidebar></app-sidebar>
 
   <div class="content">
-    <router-outlet></router-outlet>
+
+   
+    <div class="top-bar">
+      <h2>Welcome, {{ adminName }}</h2>
+      <!-- <button class="logout-btn" (click)="logout()">Logout</button> -->
+    </div>
+
+
+    <div class="card-grid">
+
+      <div class="stat-card customers">
+        <h4>Total Customers</h4>
+        <p>{{ totalCustomers }}</p>
+      </div>
+
+      <div class="stat-card providers">
+        <h4>Total Providers</h4>
+        <p>{{ totalProviders }}</p>
+      </div>
+
+      <div class="stat-card services">
+        <h4>Total Services</h4>
+        <p>{{ totalServices }}</p>
+      </div>
+
+      <div class="stat-card appointments">
+        <h4>Total Appointments</h4>
+        <p>{{ totalAppointments }}</p>
+      </div>
+
+    </div>
+
+    
+    <div class="table-card">
+      <h3>All Appointments</h3>
+
+      <table>
+        <tr>
+          <th>Service</th>
+          <th>Provider</th>
+          <th>Customer</th>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Status</th>
+        </tr>
+
+        <tr *ngFor="let a of appointments">
+          <td>{{ a.serviceName }}</td>
+          <td>{{ a.providerName }}</td>
+          <td>{{ a.customerName }}</td>
+          <td>{{ a.appointmentDate | date }}</td>
+          <td>{{ a.startTime }} - {{ a.endTime }}</td>
+          <td>{{ a.status }}</td>
+        </tr>
+
+        <tr *ngIf="appointments.length === 0">
+          <td colspan="6" class="empty">No appointments found</td>
+        </tr>
+      </table>
+    </div>
+
   </div>
 </div>
-
-
-<button (click)="logout()">Logout</button>

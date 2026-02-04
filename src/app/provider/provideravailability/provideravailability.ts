@@ -12,7 +12,7 @@ import { Authservice } from '../../service/authservice';
   styleUrl: './provideravailability.css',
 })
 export class Provideravailability implements OnInit {
-  providerId!: number;               // ✅ dynamic
+  providerId!: number;               
   availabilities: any[] = [];
 
   availability = {
@@ -23,11 +23,11 @@ export class Provideravailability implements OnInit {
 
   constructor(
     private service: Availabilityservice,
-    private auth: Authservice      // ✅ inject auth
+    private auth: Authservice      
   ) {}
 
   ngOnInit() {
-    // ✅ get logged-in provider ID
+  
     this.providerId = this.auth.getUserId();
     this.load();
   }

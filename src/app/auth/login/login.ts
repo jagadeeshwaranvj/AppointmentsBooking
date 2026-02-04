@@ -23,16 +23,17 @@ export class Login {
     this.auth.login(this.email, this.password).subscribe({
       next: (res: any) => {
 
-        // 🔒 ROLE VALIDATION
+      
         if (res.role !== this.selectedRole) {
           alert('Role mismatch');
           return;
         }
 
-        // ✅ SAVE USER INFO (ONE PLACE ONLY)
-        this.auth.setLoginUser(res.userId, res.role);
+      
+this.auth.setLoginUser(res.userId, res.role, res.name);
 
-        // 🔁 ROLE BASED NAVIGATION
+
+       
         if (res.role === 'ADMIN') {
           this.router.navigate(['/admin']);
         }

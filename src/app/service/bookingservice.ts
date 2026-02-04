@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root',
 })
-export class Bookingservice {
+export class  Bookingservice {
     api = 'https://localhost:7286/api';
 
   constructor(private http: HttpClient) {}
@@ -34,6 +34,14 @@ export class Bookingservice {
     `${this.api}/Appointments/customer/${customerId}`
   );
 }
+
+getProviderAppointments(providerId: number) {
+  return this.http.get<any[]>(
+    `${this.api}/Appointments/provider/${providerId}`
+  );
+}
+
+
 cancelAppointment(id: number) {
   return this.http.put(
     `${this.api}/Appointments/${id}/cancel`,

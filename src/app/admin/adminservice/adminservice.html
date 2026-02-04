@@ -6,7 +6,7 @@
 
     <form #serviceForm="ngForm" class="form">
 
-      <!-- SERVICE NAME -->
+  
       <label>Service Name</label>
       <input
         type="text"
@@ -20,7 +20,6 @@
         Service name is required
       </small>
 
-      <!-- DESCRIPTION -->
       <label>Description</label>
       <textarea
         name="description"
@@ -33,7 +32,7 @@
         Description is required
       </small>
 
-      <!-- DURATION -->
+    
       <label>Duration (minutes)</label>
       <input
         type="number"
@@ -47,7 +46,6 @@
         Duration must be at least 5 minutes
       </small>
 
-      <!-- BUTTON -->
       <button
         type="button"
         (click)="save()"
@@ -60,7 +58,6 @@
 
     <hr />
 
-    <!-- SERVICES TABLE -->
     <table>
       <tr>
         <th>Name</th>

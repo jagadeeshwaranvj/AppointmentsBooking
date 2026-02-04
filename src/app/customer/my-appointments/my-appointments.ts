@@ -13,7 +13,7 @@ import { Authservice } from '../../service/authservice';
 })
 export class MyAppointments {
    appointments: any[] = [];
-  customerId!: number;   // ✅ NO HARDCODE
+  customerId!: number;   
 
   constructor(
     private api: Bookingservice,
@@ -21,7 +21,7 @@ export class MyAppointments {
   ) {}
 
   ngOnInit() {
-    // ✅ Get logged-in user id
+  
     this.customerId = this.auth.getUserId();
     this.load();
   }
@@ -37,7 +37,7 @@ export class MyAppointments {
     this.api.cancelAppointment(id).subscribe({
       next: () => {
         alert('Appointment cancelled');
-        this.load(); // 🔁 reload list
+        this.load(); 
       },
       error: err => alert(err.error)
     });

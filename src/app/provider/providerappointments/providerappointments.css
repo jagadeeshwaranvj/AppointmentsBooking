@@ -1,19 +1,91 @@
+/* ===== LAYOUT ===== */
 .layout {
   display: flex;
+  min-height: 100vh;
+  background: #f4f6f9;
 }
 
 .content {
-  padding: 20px;
-  width: 100%;
+  flex: 1;
+  padding: 24px;
+  overflow-y: auto;
 }
 
+/* ===== PAGE TITLE ===== */
+.content h2 {
+  margin-bottom: 20px;
+  font-size: 22px;
+  color: #1f2937;
+}
+
+/* ===== TABLE CARD ===== */
 table {
   width: 100%;
   border-collapse: collapse;
-  background: white;
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
 }
 
-th, td {
-  border: 1px solid #ddd;
-  padding: 8px;
+/* ===== TABLE HEADER ===== */
+table th {
+  background: #f1f5f9;
+  padding: 14px;
+  text-align: left;
+  font-size: 14px;
+  color: #374151;
+}
+
+/* ===== TABLE BODY ===== */
+table td {
+  padding: 14px;
+  font-size: 14px;
+  color: #374151;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+/* ===== ROW HOVER ===== */
+table tr:hover {
+  background: #f9fafb;
+}
+
+/* ===== STATUS SELECT ===== */
+select {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+  font-size: 13px;
+  cursor: pointer;
+  outline: none;
+}
+
+select:focus {
+  border-color: #2563eb;
+}
+
+/* ===== STATUS COLORS ===== */
+select[value="Scheduled"] {
+  color: #2563eb;
+}
+
+select[value="Completed"] {
+  color: #16a34a;
+}
+
+select[value="Cancelled"] {
+  color: #dc2626;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  table th,
+  table td {
+    font-size: 13px;
+    padding: 10px;
+  }
+
+  .content h2 {
+    font-size: 18px;
+  }
 }
