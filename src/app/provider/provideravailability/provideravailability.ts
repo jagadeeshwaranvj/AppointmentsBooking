@@ -12,8 +12,7 @@ import { Authservice } from '../../service/authservice';
   styleUrl: './provideravailability.css',
 })
 export class Provideravailability implements OnInit {
-  providerId!: number;               
-  availabilities: any[] = [];
+   availabilities: any[] = [];
 
   availability = {
     dayOfWeek: '',
@@ -21,39 +20,41 @@ export class Provideravailability implements OnInit {
     endTime: ''
   };
 
-  constructor(
-    private service: Availabilityservice,
-    private auth: Authservice      
-  ) {}
+  constructor(private service: Availabilityservice) {}
 
   ngOnInit() {
-  
-    this.providerId = this.auth.getUserId();
     this.load();
   }
 
-  dayName(day: number): string {
-    return ['','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'][day] || '';
-  }
-
   load() {
-    this.service.getByProvider(this.providerId)
+    this.service.getMyAvailability()
       .subscribe(res => this.availabilities = res);
   }
 
   save() {
     this.service.add({
-      providerId: this.providerId,
       dayOfWeek: this.availability.dayOfWeek,
       startTime: this.availability.startTime,
       endTime: this.availability.endTime
     }).subscribe(() => {
+      alert('Availability added successfully ');
       this.load();
       this.availability = { dayOfWeek: '', startTime: '', endTime: '' };
     });
   }
 
   remove(id: number) {
-    this.service.delete(id).subscribe(() => this.load());
+    if (!confirm('Delete this availability? ')) return;
+
+    this.service.delete(id).subscribe(() => {
+      alert('Availability deleted successfully 🗑️');
+      this.load();
+    });
+  }
+
+
+  dayName(day: number): string {
+    const days = ['', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+    return days[day] || '';
   }
 }

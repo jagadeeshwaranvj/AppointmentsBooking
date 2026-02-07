@@ -6,51 +6,29 @@
 
     <form #serviceForm="ngForm" class="form">
 
-  
+
       <label>Service Name</label>
-      <input
-        type="text"
-        name="name"
-        required
-        [(ngModel)]="form.name"
-        #name="ngModel"
-        placeholder="Enter service name"
-      />
+      <input type="text" name="name" required [(ngModel)]="form.name" #name="ngModel"
+        placeholder="Enter service name" />
       <small class="error" *ngIf="name.invalid && name.touched">
         Service name is required
       </small>
 
       <label>Description</label>
-      <textarea
-        name="description"
-        required
-        [(ngModel)]="form.description"
-        #description="ngModel"
-        placeholder="Enter service description"
-      ></textarea>
+      <textarea name="description" required [(ngModel)]="form.description" #description="ngModel"
+        placeholder="Enter service description"></textarea>
       <small class="error" *ngIf="description.invalid && description.touched">
         Description is required
       </small>
 
-    
+
       <label>Duration (minutes)</label>
-      <input
-        type="number"
-        name="duration"
-        required
-        min="5"
-        [(ngModel)]="form.durationInMinutes"
-        #duration="ngModel"
-      />
+      <input type="number" name="duration" required min="5" [(ngModel)]="form.durationInMinutes" #duration="ngModel" />
       <small class="error" *ngIf="duration.invalid && duration.touched">
         Duration must be at least 5 minutes
       </small>
 
-      <button
-        type="button"
-        (click)="save()"
-        [disabled]="serviceForm.invalid"
-      >
+      <button type="button" (click)="save()" [disabled]="serviceForm.invalid">
         {{ editId === null ? 'Add Service' : 'Update Service' }}
       </button>
 
@@ -70,7 +48,8 @@
       <tr *ngFor="let s of services">
         <td>{{ s.name }}</td>
         <td>{{ s.description }}</td>
-        <td>{{ s.durationInMinutes }} mins</td>
+        <td>{{ s.durationInMinutes }}</td>
+
         <td>{{ s.isActive ? 'Active' : 'Inactive' }}</td>
         <td>
           <button (click)="edit(s)">Edit</button>

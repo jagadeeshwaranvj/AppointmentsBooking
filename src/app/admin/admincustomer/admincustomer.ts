@@ -11,7 +11,7 @@ import { Sidebar } from '../../shared/sidebar/sidebar';
   styleUrl: './admincustomer.css',
 })
 export class Admincustomer {
-customers: any[] = [];
+ customers: any[] = [];
   editUser: any = null;
 
   constructor(private api: Userservice) {}
@@ -26,19 +26,25 @@ customers: any[] = [];
   }
 
   edit(c: any) {
+    alert('Editing customer ✏️');
     this.editUser = { ...c };
   }
 
   update() {
     this.api.update(this.editUser.userId, this.editUser)
       .subscribe(() => {
+        alert('Customer updated successfully ');
         this.editUser = null;
         this.load();
       });
   }
 
   delete(id: number) {
-    if (!confirm('Delete this customer?')) return;
-    this.api.delete(id).subscribe(() => this.load());
+    if (!confirm('Are you sure you want to delete this customer? ❌')) return;
+
+    this.api.delete(id).subscribe(() => {
+      alert('Customer deleted successfully 🗑️');
+      this.load();
+    });
   }
 }

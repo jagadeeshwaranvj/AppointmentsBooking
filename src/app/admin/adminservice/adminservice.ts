@@ -32,9 +32,13 @@ export class Adminservice {
 
   save() {
     if (this.editId === null) {
-      this.api.add(this.form).subscribe(() => this.load());
+      this.api.add(this.form).subscribe(() => {
+        alert('Service added successfully ');
+        this.load();
+      });
     } else {
       this.api.update(this.editId, this.form).subscribe(() => {
+        alert('Service updated successfully ✨');
         this.editId = null;
         this.load();
       });
@@ -43,6 +47,7 @@ export class Adminservice {
   }
 
   edit(s: any) {
+    alert('Editing service ');
     this.editId = s.serviceId;
     this.form = {
       name: s.name,
@@ -52,12 +57,18 @@ export class Adminservice {
   }
 
   toggle(id: number) {
-    this.api.toggle(id).subscribe(() => this.load());
+    this.api.toggle(id).subscribe(() => {
+      alert('Service status updated');
+      this.load();
+    });
   }
 
   delete(id: number) {
-    if (confirm('Delete this service?')) {
-      this.api.delete(id).subscribe(() => this.load());
+    if (confirm('Are you sure you want to delete this service? ❌')) {
+      this.api.delete(id).subscribe(() => {
+        alert('Service deleted successfully ');
+        this.load();
+      });
     }
   }
 

@@ -10,14 +10,14 @@ export class Reportservice {
   constructor(private http: HttpClient) {}
 
   byService() {
-    return this.http.get<any[]>(`${this.api}/appointments-by-service`);
+    return this.http.get<any[]>(`${this.api}/by-service`);
   }
 
   statusSummary() {
-    return this.http.get<any[]>(`${this.api}/status-summary`);
+    return this.http.get<any[]>(`${this.api}/by-status`);
   }
 
   byDate() {
-    return this.http.get<any[]>(`${this.api}/appointments-by-date`);
+    return this.http.get<any[]>(`${this.api}/by-date`);
   }
 }

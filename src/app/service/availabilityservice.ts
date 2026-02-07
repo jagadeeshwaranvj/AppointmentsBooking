@@ -9,13 +9,18 @@ export class Availabilityservice {
 
   constructor(private http: HttpClient) {}
 
-  getByProvider(providerId: number) {
-    return this.http.get<any[]>(`${this.api}/provider/${providerId}`);
-  }
+ getMyAvailability() {
+  return this.http.get<any[]>(
+    `${this.api}`
+  );
+}
 
-  add(data: any) {
-    return this.http.post(this.api, data);
-  }
+add(data: any) {
+  return this.http.post(this.api, data);
+}
+
+
+  
 
   delete(id: number) {
     return this.http.delete(`${this.api}/${id}`);

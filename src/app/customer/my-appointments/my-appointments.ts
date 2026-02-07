@@ -20,16 +20,17 @@ export class MyAppointments {
     private auth: Authservice
   ) {}
 
-  ngOnInit() {
-  
-    this.customerId = this.auth.getUserId();
-    this.load();
-  }
+ ngOnInit() {
+  this.load();
+}
 
-  load() {
-    this.api.getCustomerAppointments(this.customerId)
-      .subscribe(res => this.appointments = res);
-  }
+load() {
+  this.api.getCustomerAppointments()
+    .subscribe(res => {
+      this.appointments = res;
+    });
+}
+
 
   cancel(id: number) {
     if (!confirm('Cancel this appointment?')) return;

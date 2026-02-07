@@ -9,38 +9,39 @@ export class  Bookingservice {
 
   constructor(private http: HttpClient) {}
 
-  getServices() {
-    return this.http.get<any[]>(`${this.api}/Services/active`);
-  }
+ getServices() {
+  return this.http.get<any[]>(`${this.api}/Services/active`);
+}
+
 
   getAvailableProviders(serviceId: number, date: string) {
-    return this.http.get<any[]>(
-      `${this.api}/Slots/providers?serviceId=${serviceId}&date=${date}`
-    );
-  }
-
-  getSlots(providerId: number, serviceId: number, date: string) {
-    return this.http.get<string[]>(
-      `${this.api}/Slots?providerId=${providerId}&serviceId=${serviceId}&date=${date}`
-    );
-  }
-
-  book(data: any) {
-    return this.http.post(`${this.api}/Appointments`, data);
-  }
-
- getCustomerAppointments(customerId: number) {
   return this.http.get<any[]>(
-    `${this.api}/Appointments/customer/${customerId}`
+    `${this.api}/Slots/providers?serviceId=${serviceId}&date=${date}`
   );
 }
 
-getProviderAppointments(providerId: number) {
-  return this.http.get<any[]>(
-    `${this.api}/Appointments/provider/${providerId}`
+getSlots(providerId: number, serviceId: number, date: string) {
+  return this.http.get<string[]>(
+    `${this.api}/Slots?providerId=${providerId}&serviceId=${serviceId}&date=${date}`
   );
 }
 
+ book(data: any) {
+  return this.http.post(`${this.api}/Appointments`, data);
+}
+
+
+getCustomerAppointments() {
+  return this.http.get<any[]>(
+    `${this.api}/Appointments/customer`
+  );
+}
+
+getMyProviderAppointments() {
+  return this.http.get<any[]>(
+    `${this.api}/Appointments/provider`
+  );
+}
 
 cancelAppointment(id: number) {
   return this.http.put(

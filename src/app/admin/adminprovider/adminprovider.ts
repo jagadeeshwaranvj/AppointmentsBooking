@@ -12,7 +12,7 @@ import { Sidebar } from '../../shared/sidebar/sidebar';
   styleUrl: './adminprovider.css',
 })
 export class Adminprovider {
-providers: any[] = [];
+ providers: any[] = [];
   editId: number | null = null;
   editData: any = {};
 
@@ -27,19 +27,25 @@ providers: any[] = [];
   }
 
   edit(p: any) {
+    alert('Editing provider ');
     this.editId = p.userId;
     this.editData = { ...p };
   }
 
   save(id: number) {
     this.api.update(id, this.editData).subscribe(() => {
+      alert('Provider updated successfully ');
       this.editId = null;
       this.load();
     });
   }
 
   delete(id: number) {
-    if (!confirm('Delete provider?')) return;
-    this.api.delete(id).subscribe(() => this.load());
+    if (!confirm('Are you sure you want to delete this provider? ')) return;
+
+    this.api.delete(id).subscribe(() => {
+      alert('Provider deleted successfully ');
+      this.load();
+    });
   }
 }

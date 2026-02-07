@@ -2,61 +2,41 @@
   <app-sidebar></app-sidebar>
 
   <div class="content">
+    <h2>Welcome, {{ customerName }}</h2>
 
- 
-    <div class="top-bar">
-      <h2>Welcome, {{ customerName }}</h2>
-    </div>
-
-   
     <div class="card-grid">
-
-      <div class="stat-card">
-        <h3>Total Appointments</h3>
-        <p>{{ totalAppointments }}</p>
-      </div>
-
-      <div class="stat-card">
-        <h3>Appointment Status</h3>
-        <p>Scheduled: {{ scheduledCount }}</p>
-        <p>Completed: {{ completedCount }}</p>
-        <p>Cancelled: {{ cancelledCount }}</p>
-      </div>
-
-      <div class="stat-card">
-        <h3>Customer Info</h3>
-        <p>Name: {{ customerName }}</p>
-        <p>ID: {{ customerId }}</p>
-      </div>
-
+      <div class="stat-card">Total: {{ total }}</div>
+      <div class="stat-card">Scheduled: {{ scheduled }}</div>
+      <div class="stat-card">Completed: {{ completed }}</div>
+      <div class="stat-card">Cancelled: {{ cancelled }}</div>
     </div>
 
-    
-    <div class="table-card">
-      <h3>My Appointments</h3>
+    <h3>My Appointments</h3>
 
-      <table>
-        <tr>
-          <th>Service</th>
-          <th>Provider</th>
-          <th>Date</th>
-          <th>Time</th>
-          <th>Status</th>
-        </tr>
+    <table>
+      <tr>
+        <th>Service</th>
+        <th>Provider</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
 
-        <tr *ngFor="let a of appointments">
-          <td>{{ a.serviceName }}</td>
-          <td>{{ a.providerName }}</td>
-          <td>{{ a.appointmentDate | date }}</td>
-          <td>{{ a.startTime }} - {{ a.endTime }}</td>
-          <td>{{ a.status }}</td>
-        </tr>
-
-        <tr *ngIf="appointments.length === 0">
-          <td colspan="5">No appointments found</td>
-        </tr>
-      </table>
-    </div>
-
+      <tr *ngFor="let a of appointments">
+        <td>{{ a.serviceName }}</td>
+        <td>{{ a.providerName }}</td>
+        <td>{{ a.appointmentDate | date }}</td>
+        <td>{{ a.startTime }} - {{ a.endTime }}</td>
+        <td>{{ a.status }}</td>
+        <td>
+          <button
+            *ngIf="a.status === 'Scheduled'"
+            (click)="cancel(a.appointmentId, a.appointmentDate)">
+            Cancel
+          </button>
+        </td>
+      </tr>
+    </table>
   </div>
 </div>

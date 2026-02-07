@@ -3,7 +3,7 @@
 
   <div class="content">
 
-   
+
     <div class="top-bar">
       <h2>Welcome, {{ adminName }}</h2>
       <!-- <button class="logout-btn" (click)="logout()">Logout</button> -->
@@ -34,7 +34,7 @@
 
     </div>
 
-    
+
     <div class="table-card">
       <h3>All Appointments</h3>
 
@@ -56,6 +56,8 @@
           <td>{{ a.startTime }} - {{ a.endTime }}</td>
           <td>{{ a.status }}</td>
         </tr>
+
+
 
         <tr *ngIf="appointments.length === 0">
           <td colspan="6" class="empty">No appointments found</td>

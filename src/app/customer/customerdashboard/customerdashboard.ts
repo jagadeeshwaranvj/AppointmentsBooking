@@ -12,45 +12,51 @@ import { Bookingservice } from '../../service/bookingservice';
   styleUrl: './customerdashboard.css',
 })
 export class Customerdashboard implements OnInit {
- customerName = '';
+   customerName = '';
   customerId!: number;
 
   appointments: any[] = [];
 
-  totalAppointments = 0;
-  scheduledCount = 0;
-  completedCount = 0;
-  cancelledCount = 0;
+  total = 0;
+  scheduled = 0;
+  completed = 0;
+  cancelled = 0;
 
   constructor(
     private auth: Authservice,
-    private bookingApi: Bookingservice
+    private booking: Bookingservice
   ) {}
 
-  ngOnInit(): void {
-    this.customerName = this.auth.getUserName();
-    this.customerId = this.auth.getUserId();
-    this.loadAppointments();
-  }
+  ngOnInit() {
+  this.customerName = this.auth.getUserName();
+  this.loadAppointments();
+}
 
-  loadAppointments() {
-    this.bookingApi.getCustomerAppointments(this.customerId)
-      .subscribe(res => {
-        this.appointments = res;
-        this.calculateSummary();
-      });
-  }
+loadAppointments() {
+  this.booking.getCustomerAppointments()
+    .subscribe(res => {
+      this.appointments = res;
+      this.calculate();
+    });
+}
 
-  calculateSummary() {
-    this.totalAppointments = this.appointments.length;
 
-    this.scheduledCount =
-      this.appointments.filter(a => a.status === 'Scheduled').length;
+ calculate() {
+  this.total = this.appointments.length;
+  this.scheduled = this.appointments.filter(a => a.status === 'Scheduled').length;
+  this.completed = this.appointments.filter(a => a.status === 'Completed').length;
+  this.cancelled = this.appointments.filter(a => a.status === 'Cancelled').length;
+}
 
-    this.completedCount =
-      this.appointments.filter(a => a.status === 'Completed').length;
 
-    this.cancelledCount =
-      this.appointments.filter(a => a.status === 'Cancelled').length;
+  cancel(id: number, date: string) {
+    if (new Date(date) < new Date()) {
+      alert('Past appointment cannot be cancelled');
+      return;
+    }
+
+    this.booking.cancelAppointment(id).subscribe(() => {
+      this.loadAppointments();
+    });
   }
 }

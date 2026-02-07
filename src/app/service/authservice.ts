@@ -6,53 +6,48 @@ import { Observable } from 'rxjs';
 })
 export class Authservice {
   
- private apiUrl = 'https://localhost:7286/api/Users';
+ api = 'https://localhost:7286/api/Users';
 
   constructor(private http: HttpClient) {}
 
-  
   login(email: string, password: string) {
     return this.http.post<any>(
-      `${this.apiUrl}/login`,
-      null,
-      { params: { email, password } }
+      `${this.api}/login?email=${email}&password=${password}`,
+      {}
     );
   }
 
-  
-  setLoginUser(userId: number, role: string, name: string) {
+  setLoginUser(userId: number, role: string, name: string, token: string) {
+    localStorage.setItem('token', token);
     localStorage.setItem('userId', userId.toString());
     localStorage.setItem('role', role);
     localStorage.setItem('name', name);
   }
 
-  
-  getUserId(): number {
-    return Number(localStorage.getItem('userId'));
+  getToken(): string | null {
+    return localStorage.getItem('token');
   }
 
-  getRole(): string {
-    return localStorage.getItem('role') || '';
+  getUserId(): number {
+    return Number(localStorage.getItem('userId'));
   }
 
   getUserName(): string {
     return localStorage.getItem('name') || '';
   }
 
-  
-  isAdmin(): boolean {
-    return this.getRole() === 'ADMIN';
+  isAdmin() {
+    return localStorage.getItem('role') === 'ADMIN';
   }
 
-  isProvider(): boolean {
-    return this.getRole() === 'PROVIDER';
+  isProvider() {
+    return localStorage.getItem('role') === 'PROVIDER';
   }
 
-  isCustomer(): boolean {
-    return this.getRole() === 'CUSTOMER';
+  isCustomer() {
+    return localStorage.getItem('role') === 'CUSTOMER';
   }
 
-  
   logout() {
     localStorage.clear();
   }

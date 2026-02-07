@@ -19,28 +19,28 @@ import { Adminprovider } from './admin/adminprovider/adminprovider';
 
 
 export const routes: Routes = [
-    {path: '', redirectTo: 'login', pathMatch: 'full'},
-    {path: 'login', component: Login},
-    {path:'admin', component: AdminDashboard, canActivate:[authguardGuard]},
+    { path: '', redirectTo: 'login', pathMatch: 'full' },
+    { path: 'login', component: Login },
+    { path: 'admin', component: AdminDashboard, canActivate: [authguardGuard] },
 
 
-{path:'admin/services',component:Adminservice, canActivate:[authguardGuard]},
-    {path:'provider',component:Providerdashboard, canActivate:[providerguardGuard]},
+    { path: 'admin/services', component: Adminservice, canActivate: [authguardGuard] },
+    { path: 'provider', component: Providerdashboard, canActivate: [providerguardGuard] },
 
-{path:'provider/appointments',component:Providerappointments, canActivate:[providerguardGuard]},
-{path:'provider/availability',component:Provideravailability, canActivate:[providerguardGuard]},
-    {path:'customer',component:Customerdashboard, canActivate:[customerguardGuard]},
-  {path:'customer/my-appointments',component:MyAppointments, canActivate:[customerguardGuard]},
+    { path: 'provider/appointments', component: Providerappointments, canActivate: [providerguardGuard] },
+    { path: 'provider/availability', component: Provideravailability, canActivate: [providerguardGuard] },
+    { path: 'customer', component: Customerdashboard, canActivate: [customerguardGuard] },
+    { path: 'customer/my-appointments', component: MyAppointments, canActivate: [customerguardGuard] },
 
-{path:'admin/register',component:Register, canActivate:[authguardGuard]},
-{path:'admin/appointments',component:AdminAppointments, canActivate:[authguardGuard]},
+    { path: 'admin/register', component: Register, canActivate: [authguardGuard] },
+    { path: 'admin/appointments', component: AdminAppointments, canActivate: [authguardGuard] },
 
-{path:'customer/booking',component:Booking, canActivate:[customerguardGuard]},
-{path:'admin/customers',component:Admincustomer, canActivate:[authguardGuard]},
-{path:'admin/providers',component:Adminprovider, canActivate:[authguardGuard]},
+    { path: 'customer/booking', component: Booking, canActivate: [customerguardGuard] },
+    { path: 'admin/customers', component: Admincustomer, canActivate: [authguardGuard] },
+    { path: 'admin/providers', component: Adminprovider, canActivate: [authguardGuard] },
 
-{path:'admin/reports',component:Adminreport, canActivate:[authguardGuard]},
+    { path: 'admin/reports', component: Adminreport, canActivate: [authguardGuard] },
 
 
-    
+
 ];

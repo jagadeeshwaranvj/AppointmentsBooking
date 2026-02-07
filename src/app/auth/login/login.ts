@@ -30,7 +30,13 @@ export class Login {
         }
 
       
-this.auth.setLoginUser(res.userId, res.role, res.name);
+this.auth.setLoginUser(
+  res.userId,
+  res.role,
+  res.name,
+  res.token
+);
+
 
 
        

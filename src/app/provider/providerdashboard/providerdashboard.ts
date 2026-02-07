@@ -29,30 +29,30 @@ export class Providerdashboard implements OnInit {
     private bookingApi: Bookingservice
   ) {}
 
-  ngOnInit(): void {
-    this.providerName = this.auth.getUserName();
-    this.providerId = this.auth.getUserId();
-    this.loadAppointments();
-  }
+ngOnInit(): void {
+  this.providerName = this.auth.getUserName();
+  this.loadAppointments();
+}
 
-  loadAppointments() {
-    this.bookingApi.getProviderAppointments(this.providerId)
-      .subscribe(res => {
-        this.appointments = res;
-        this.calculateSummary();
-      });
-  }
+loadAppointments() {
+  this.bookingApi.getMyProviderAppointments()
+    .subscribe(res => {
+      this.appointments = res;
+      this.calculateSummary();
+    });
+}
 
-  calculateSummary() {
-    this.totalAppointments = this.appointments.length;
+calculateSummary() {
+  this.totalAppointments = this.appointments.length;
 
-    this.scheduledCount =
-      this.appointments.filter(a => a.status === 'Scheduled').length;
+  this.scheduledCount =
+    this.appointments.filter(a => a.status === 'Scheduled').length;
 
-    this.completedCount =
-      this.appointments.filter(a => a.status === 'Completed').length;
+  this.completedCount =
+    this.appointments.filter(a => a.status === 'Completed').length;
 
-    this.cancelledCount =
-      this.appointments.filter(a => a.status === 'Cancelled').length;
-  }
+  this.cancelledCount =
+    this.appointments.filter(a => a.status === 'Cancelled').length;
+}
+
 }

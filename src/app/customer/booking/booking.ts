@@ -60,20 +60,37 @@ export class Booking {
     ).subscribe(res => this.slots = res);
   }
 
-  book() {
-    if (!this.selectedSlot) return;
-
-    this.api.book({
-      serviceId: this.selectedServiceId!,
-      providerId: this.selectedProviderId!,
-      customerId: this.customerId,
-      appointmentDate: this.selectedDate,
-      startTime: this.selectedSlot
-    }).subscribe({
-      next: () => alert('Appointment booked successfully'),
-      error: err => alert(err.error)
-    });
+ book() {
+  if (!this.selectedSlot) {
+    alert('Please select a time slot');
+    return;
   }
+
+
+   this.api.book({
+  serviceId: this.selectedServiceId!,
+  providerId: this.selectedProviderId!,
+  appointmentDate: this.selectedDate,
+  startTime: this.selectedSlot
+
+
+  }).subscribe({
+    next: () => {
+      alert('Appointment booked successfully');
+      this.selectedSlot = '';
+      this.loadSlots();
+    },
+    error: err => {
+      const msg =
+        err.error?.message ||
+        err.error ||
+        'Unable to book appointment';
+
+      alert(msg);
+    }
+  });
+}
+
 
 
 

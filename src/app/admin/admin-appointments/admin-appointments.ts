@@ -17,19 +17,23 @@ export class AdminAppointments {
 
   constructor(private api: AdminappointmentService ) {}
 
-  ngOnInit() {
+   ngOnInit() {
     this.load();
   }
 
   load() {
-    this.api.getAll().subscribe(res => this.appointments = res);
+    this.api.getAll().subscribe(res => {
+      this.appointments = res;
+    });
   }
 
- updateStatus(id: number, status: string) {
-  this.api.updateStatus(id, status).subscribe(() => {
-    const appt = this.appointments.find(a => a.appointmentId === id);
-    if (appt) appt.status = status;
-  });
-}
+  updateStatus(id: number, status: string) {
+    this.api.updateStatus(id, status).subscribe(() => {
+      const appt = this.appointments.find(a => a.appointmentId === id);
+      if (appt) appt.status = status;
+      alert('Status updated');
+    });
+  }
+
 
 }

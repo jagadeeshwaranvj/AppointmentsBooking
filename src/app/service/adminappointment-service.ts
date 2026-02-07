@@ -5,12 +5,16 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class AdminappointmentService {
-    api = 'https://localhost:7286/api/Appointments';
+  api = 'https://localhost:7286/api/Appointments';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getAll() {
     return this.http.get<any[]>(`${this.api}/admin`);
+  }
+
+  getAllPromise(): Promise<any[] | undefined> {
+    return this.http.get<any[]>(`${this.api}/admin`).toPromise();
   }
 
   updateStatus(id: number, status: string) {
